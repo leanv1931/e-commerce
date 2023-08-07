@@ -1,9 +1,19 @@
 import React from 'react';
-import './CartWidge.css';
+import logo from './cartI.png';
+
+import './CartWidget.css';
 
 const CartWidget = (props) => {
   return (
-    <p className="cart-widget">{props.title}</p>
+    <div className="container">
+    <h2 className="cart-widget">{props.title}</h2>
+    <img src={logo} className="img-small"  alt="logo" />
+  </div>
+
+
+     
+      
+
   );
 };
 

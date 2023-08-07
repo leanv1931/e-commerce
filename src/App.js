@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <ItemListContainer props="liscontainer enviado" />      
+      <ItemListContainer greeting="list container" />
     </div>
   );
 }
