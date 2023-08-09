@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
-import ItemListContainer from './components/ItemListContainer';
-import CartWidget from './components/CartWidget';
-
-
+import NavBar from './components/NavBar/NavBar'
+import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 
 function App() {
 
   return (
     <div className="App">
-      <Navbar />
-      <ItemListContainer greeting="list container" />
+      <NavBar />
+      <ItemListContainer greeting="Bienvenidos a infinita" />
     </div>
   );
 }

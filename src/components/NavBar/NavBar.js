@@ -1,8 +1,6 @@
-import React from 'react';
-import './Navbar.css';
-import CartWidget from './CartWidget'; // Importamos el componente CartWidget
+import CartWidget from '../CartWidget/CartWidget'
 
-const Navbar = () => {
+const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="logo">INFINITA</div>
@@ -12,9 +10,9 @@ const Navbar = () => {
         <li><a href="#">Contacto</a></li>
         <li><a href="#">Quienes somos</a></li>
       </ul>
-       <CartWidget title="cart widget enviado"/>
+       <CartWidget title="1"/>
     </nav>
   );
 }
 
-export default Navbar;
+export default NavBar;

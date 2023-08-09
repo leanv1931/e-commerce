@@ -1,0 +1,60 @@
+.CartWidget {
+    display: flex;
+    margin-right: 40px;
+}
+
+.CartWidget p {
+    color:black;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 100%;
+    padding: 8px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(128, 6, 6);
+    padding: 10px;
+    color: white;
+}
+  
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+  
+.nav-links li {
+    margin-right: 20px;
+}
+  
+.nav-links li a {
+  color: rgb(141, 113, 113);
+  text-decoration: none;
+}
+  
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+  
+.item-list-container {
+    background-color: rgb(128, 6, 6);
+    padding: 8px;
+    margin-top: 40px;
+}
+
+
+.item-list-container p {
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+}
+
+.item-list-container p:hover {
+    color: rgba(255, 255, 255, 0.467);
+}
+
