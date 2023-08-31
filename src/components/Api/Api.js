@@ -1,11 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Image } from 'react-bootstrap';
 import ListProductos from '../listProductos'
-
-
-
-
-// https://fakestoreapi.com/docs
 
 const Api = () => {
 
@@ -53,13 +47,11 @@ const Api = () => {
   return (
     <div className="App">
       <header className="App-header">
-       {/*  <h1>Mi Ecommerce en React - Cart: {cart.length}</h1> */}
+ 
         <div>
           <div className='categories-container'>
             {categories?.map(cat =>  
              <button key={cat} onClick={() => getByCategory(categories)}> {cat}</button>
-              // mis botones de categorias que cada onClick ejecute getByCategory('MiCategoria')
-            
             )} 
           </div>
         {cargando ? (
@@ -74,8 +66,3 @@ const Api = () => {
 }
 
 export default Api;
-
-
-
-// Componente que me devuelva los items con una llamada fetch
-// y una lista de botones que me permita filtrar por categorias

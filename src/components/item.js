@@ -1,9 +1,3 @@
-
-
-
-
-import { useEffect, useState } from 'react';
-
 const Item = ({producto, cart, setCart}) => {
 
     const addToCart = () => {
