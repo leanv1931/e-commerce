@@ -9,9 +9,6 @@ const Item = ({producto, cart, setCart}) => {
     <>
     <div>
         <div>
-          <p> nota para tutor: NO PUEDO RESOLVER EL CLICK DE "AGREGAR button" </p>
-        </div>
-        <div>
             <li key={producto}>
                   <p>Titulo: {producto.titulo}</p> 
                   <p>Precio: {producto.price}</p> 
