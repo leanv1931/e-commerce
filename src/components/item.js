@@ -2,7 +2,7 @@
 const Item = ({producto, cart, setCart}) => {
 
     const addToCart = () => {
-        setCart([...cart, producto.id]) 
+        setCart([...cart, producto]) 
     }
 
   return (

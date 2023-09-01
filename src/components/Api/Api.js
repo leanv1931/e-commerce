@@ -23,8 +23,8 @@ const Api = () => {
     fetch('https://fakestoreapi.com/products/categories')
       .then(res => res.json())
       .then(data => setCategories(data))
-      .catch(e => console.error(e))  
-    }, [])
+      .catch(e => console.error(e))
+  }, [])
 
   useEffect(() => {
     if(categorySelected){
