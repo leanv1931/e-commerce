@@ -10,7 +10,7 @@ const Item = ({producto, cart, setCart}) => {
     <div>
         <div>
             <li key={producto}>
-                  <p>Titulo: {producto.titulo}</p> 
+                  <p>Titulo: {producto.title}</p> 
                   <p>Precio: {producto.price}</p> 
                   <p>Categoria: {producto.category}</p> 
                   <img src={producto.image} alt={producto.title} />
