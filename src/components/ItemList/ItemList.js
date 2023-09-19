@@ -1,9 +1,13 @@
 
 import Item from "../Item/item"
+import { useParams } from 'react-router-dom'
 
 
 
-const ItemListDetailsContainer = ({productos, cart, agregarAlCarrito}) => {
+
+const ItemList = ({productos, cart, agregarAlCarrito}) => {
+  const params = useParams()
+
 
   return (
     <>
@@ -12,10 +16,12 @@ const ItemListDetailsContainer = ({productos, cart, agregarAlCarrito}) => {
     <div>  
        {productos.map(prod => (
           <Item key={prod.id} producto={prod} cart={cart} setCart={agregarAlCarrito} /> 
+
         ))} 
     </div>
+    
     </>
   );
 };
 
-export default ItemListDetailsContainer;
+export default ItemList;

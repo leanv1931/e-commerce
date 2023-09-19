@@ -1,9 +1,12 @@
+// contador
+// itemCount.js
+
 
 import React from "react";
 import { Link } from "react-router-dom";
 
 
-const Item = ({producto, cart, agregarAlCarrito}) => {
+const ItemDetails = ({producto, cart, agregarAlCarrito}) => {
 
   return (
 
@@ -24,4 +27,4 @@ const Item = ({producto, cart, agregarAlCarrito}) => {
   );
 };
 
-export default Item;
+export default ItemDetails;

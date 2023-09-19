@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import { Link } from "react-router-dom";
+import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
+
+/* import { Link } from "react-router-dom"; */
+// check si necesito etiqueta Link EN EL PROYECTO
 
 import {
   BrowserRouter,
@@ -20,6 +23,7 @@ return (
   <Routes>
     <Route path="/" element={<ItemListContainer greeting="Bienvenidos a infinita"/>} /> 
     <Route path="/category/:id" element={<ItemListContainer/>} />
+    <Route path="/item/:id" element={<ItemDetailContainer reeting="Bienvenidos a details container"/>} />
   </Routes>
 </BrowserRouter>
  );

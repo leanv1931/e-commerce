@@ -1,11 +1,11 @@
 
 import { useEffect, useState } from 'react';
-import ItemListDetailsContainer from '../ItemListDetailsContainer/ItemListDetailsContainer';
+import ItemList from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom'
 
 const ItemListContainer = (props) => {
 
-  const categoriesvalue = ["electronics", "jewelery", "men's clothing","women's clothing"]
+/*   const categoriesvalue = ["electronics", "jewelery", "men's clothing","women's clothing"]*/  
   const [cargando, setCargando] = useState(true)
   const [productos, setProductos] = useState([])
   const [categories, setCategories] = useState([])
@@ -42,10 +42,10 @@ const ItemListContainer = (props) => {
     }
   }, [categorySelected])
 
-  const getByCategory = (categories) => {
+  /* const getByCategory = (categories) => {
     setCargando(true)
     setCategorySelected(categories)
-  }
+  } */
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -76,15 +76,17 @@ const ItemListContainer = (props) => {
     </div>
    
     {cargando ? (<p>Cargando productos...</p>)
-              : (<ItemListDetailsContainer productos={productos} cart={cantidadEnCarrito} setCart={agregarAlCarrito}/>) 
+              : (<ItemList productos={productos} cart={cantidadEnCarrito} setCart={agregarAlCarrito}/>) 
     }
-    <footer className='footer-container'>
+
+
+   {/*  <footer className='footer-container'>
             {categoriesvalue?.map(cat => (
             <button className='category-button'
             key={cat} onClick={() => getByCategory(cat === categorySelected ? categories : [cat])}> 
             {cat}</button>
         ))}
-    </footer>
+    </footer> */}
     </>
   );
 };
