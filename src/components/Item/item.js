@@ -1,9 +1,17 @@
 
-import React from "react";
 import { Link } from "react-router-dom";
+/* import { useParams } from 'react-router-dom'
+ */
+import { CartContext } from "../../context/cartContext";
+import { useContext } from "react";
+
+const Item = ({ producto }) => {
+
+  const { agregarAlCarrito } = useContext(CartContext);
 
 
-const Item = ({producto, cart, agregarAlCarrito}) => {
+/*   const params = useParams() 
+ */
 
   return (
 
@@ -15,7 +23,7 @@ const Item = ({producto, cart, agregarAlCarrito}) => {
         <p className="product-price">Precio: {producto.price}</p>
         <p className="product-category">Categoría: {producto.category}</p>
       </div>
-      <button> <Link to={`/item/${producto.id}`} onClick={agregarAlCarrito}> Agregar </Link></button>
+      <button> <Link to={`/item/${producto.id}`} onClick={agregarAlCarrito}> Ver Detalles </Link></button>
 
 
    {/*    <Cart cantidadEnCarrito={cart} /> */}     

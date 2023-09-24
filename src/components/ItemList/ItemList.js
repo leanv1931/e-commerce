@@ -1,24 +1,21 @@
 
 import Item from "../Item/item"
-import { useParams } from 'react-router-dom'
+/* import { useParams } from 'react-router-dom'
+ */
+import { CartContext } from "../../context/cartContext";
+import React, { useContext } from "react";
 
-
-
-
-const ItemList = ({productos, cart, agregarAlCarrito}) => {
-  const params = useParams()
-
-
+const ItemList = () => {
+  const { productos } = useContext(CartContext);
+  /* const params = useParams() */
   return (
-    <>
-   
-    <h4>Productos : </h4>
-    <div>  
+    <> 
+   <h4>Productos : </h4>
+     <div>
        {productos.map(prod => (
-          <Item key={prod.id} producto={prod} cart={cart} setCart={agregarAlCarrito} /> 
-
+        <Item key={prod.id} producto={prod} />
         ))} 
-    </div>
+     </div>
     
     </>
   );

@@ -1,12 +1,9 @@
-// contador
-// itemCount.js
-
-
 import React from "react";
 import { Link } from "react-router-dom";
-
+import ItemCount from "../ItemCount/ItemCount";
 
 const ItemDetails = ({producto, cart, agregarAlCarrito}) => {
+
 
   return (
 
@@ -19,7 +16,8 @@ const ItemDetails = ({producto, cart, agregarAlCarrito}) => {
         <p className="product-category">Categoría: {producto.category}</p>
       </div>
       <button> <Link to={`/item/${producto.id}`} onClick={agregarAlCarrito}> Agregar </Link></button>
-
+      
+      <ItemCount/> 
 
    {/*    <Cart cantidadEnCarrito={cart} /> */}     
     </div>
