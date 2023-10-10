@@ -1,17 +1,24 @@
-import carrito from '../../assets/img/carrito.png'
+import carritoImg from '../../assets/img/carrito.png'
+import { useContext } from "react";
+import { CartContext } from "../../context/cartContext";
+import { Link } from "react-router-dom";
 
- //const CartWidget = ([props]) => {
-const CartWidget = ({ cantidadEnCarrito }) => {
+
+
+
+const CartWidget = ({ producto }) => {
+
+  const {cantidadEnCarrito} = useContext(CartContext);
 
 
   return (
+    
   <div className="CartWidget">
-      <a href="#">
-          <img src={carrito} alt='carrito'/>
-      </a>
-  {/*   <p>{props}</p>*/} 
-           <span>{cantidadEnCarrito}</span> 
-  </div>    
+          <img src={carritoImg} alt='carrito'/>
+          <Link to={`/carrito`}> <p className="product-title">{cantidadEnCarrito}</p></Link>
+
+  </div> 
+
   );
 };
 

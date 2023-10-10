@@ -1,34 +1,20 @@
 
-import { useEffect, useState } from 'react';
 import ItemDetails from '../ItemDetail/ItemDetail';
-import { useParams } from 'react-router-dom';
-
+import React, { useContext } from "react";
+import { CartContext } from "../../context/cartContext";
 
 const ItemDetailContainer = (props) => {
 
-    const params = useParams()
-    const [producto, setProductos] = useState('')
-    const [cargando, setCargando] = useState(true)
+  const {cargando} = useContext(CartContext);
 
-
-
-    useEffect(() => {
-        fetch(`https://fakestoreapi.com/products/${params.id}`)
-        .then(res => res.json())
-        .then(data => {
-        setProductos(data)
-        })
-        .catch(e => console.error(e))
-        .finally(() => setCargando(false))
-      }, [params])
     
     return (
         <>
         <div className="item-list-container">
           <p>{props.greeting}</p>    
         </div>
-        {cargando ? (<p>Cargando productos...</p>)
-              : ( <ItemDetails producto={producto} /> ) 
+        {cargando ? (<p>Cargando detalles productos ...</p>)
+              : ( <ItemDetails/> ) 
         }
         </>
       );

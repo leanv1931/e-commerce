@@ -3,27 +3,24 @@
 import ItemList from '../ItemList/ItemList';
 import { CartContext } from "../../context/cartContext";
 import React, { useContext } from "react";
+import {getDocs, collection, query, where } from 'firebase/firestore'
+
+
 
 const ItemListContainer = (props) => {
 
-  const {cargando} = useContext(CartContext);
+  const {cargando} = useContext(CartContext);  
   return (
     <>
     <div className="item-list-container">
       <p>{props.greeting}</p>    
     </div>
     
-    { cargando ? (<p>Cargando productos...</p>) : (<ItemList/>) 
+    { cargando ? (<p>Cargando productos listing...</p>) 
+                : ( <ItemList/> ) 
     }
+ 
 
-{/* FOOTER CON BOTONES */}
-   {/*  <footer className='footer-container'>
-            {categoriesvalue?.map(cat => (
-            <button className='category-button'
-            key={cat} onClick={() => getByCategory(cat === categorySelected ? categories : [cat])}> 
-            {cat}</button>
-        ))}
-    </footer> */}
     </>
   );
 };

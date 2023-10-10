@@ -5,12 +5,11 @@ import { useParams } from 'react-router-dom'
 // Creamos el contexto con createContext
 export const CartContext = createContext(); 
 
-
 // Creamos un componente para nuestro contexto
 export const CartComponentContext = ({children}) => {
 
 
-/*const categoriesvalue = ["electronics", "jewelery", "men's clothing","women's clothing"]*/  
+/*   const categoriesvalue = ["electronics", "jewelery", "men's clothing","women's clothing"]*/  
 const [cargando, setCargando] = useState(true)
 const [productos, setProductos] = useState([])
 const [categories, setCategories] = useState([])
@@ -52,7 +51,8 @@ useEffect(() => {
   setCategorySelected(categories)
 } */
 
-useEffect(() => {
+//loop
+/* useEffect(() => {
   fetch('https://fakestoreapi.com/products')
   .then(res => res.json())
   .then(data => {
@@ -65,7 +65,7 @@ useEffect(() => {
   })
   .catch(e => console.error(e))
   .finally(() => setCargando(false))
-}, [params])
+}, [params]) */
 
 
 const agregarAlCarrito = () => {

@@ -1,30 +1,32 @@
 
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+
+import { CartContext } from "../../context/cartContext";
 
 
 
-const ItemCount= (props) => {
 
-    const [contador, setContador] = useState(0)
+const ItemCount= ( {producto } ) => {
 
-    useEffect(() => {
-         console.log('soy el useEffect que se ejecuta cuando el componente se monta y cuando el estado contador cambia')
-    }, [contador])
+    const {contador} = useContext(CartContext);
+    const {decrement} = useContext(CartContext);
+    const {increment} = useContext(CartContext);
+    const {reset} = useContext(CartContext);
+    const { agregarAlCarrito} = useContext(CartContext);
+    const { carritoCheckout } = useContext(CartContext);
 
 
-    const increment = () => {
-      setContador(prev => prev + 1)
+
+    const { setCheckout} = useContext(CartContext);
+
+
+    const IrCheckout = () => {
+      //  setCheckout(producto)
+      setCheckout([...carritoCheckout, producto]);
+
     }
-  
-    const decrement = () => {
-      setContador(prev => prev - 1)
-    }
-
-    const reset = () => {
-      setContador(0)
-    }
-
-
 
     return (
 
@@ -33,6 +35,13 @@ const ItemCount= (props) => {
             <button onClick={decrement}>-</button>
             <button onClick={increment}>+</button>
             <button onClick={reset}>Resetear</button>
+
+           {/*  <button onClick={[agregarAlCarrito , IrCheckout() ]}  >Agregar al carrito</button> */}
+
+            <button onClick={() => {
+                    agregarAlCarrito();
+                    IrCheckout();
+                        }}>Agregar al carrito</button>
         </>
       );
 
