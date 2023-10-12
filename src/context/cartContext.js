@@ -58,7 +58,6 @@ const agregarAlCarrito = () => {
 
 
 const finalizarCompra = () =>{
-
     const order = {
       buyer: {name: "Abel", phone: "1155889966", email: "abel@abel.com"},
       items: carritoCart,
@@ -66,8 +65,6 @@ const finalizarCompra = () =>{
     }
     const orderCollection = collection(db, 'pedidos')
     addDoc(orderCollection, order).then(({id}) => console.log(id))
-
-
 }
 
 
