@@ -3,13 +3,14 @@
 import ItemList from '../ItemList/ItemList';
 import { CartContext } from "../../context/cartContext";
 import React, { useContext } from "react";
-import {getDocs, collection, query, where } from 'firebase/firestore'
 
 
 
 const ItemListContainer = (props) => {
 
-  const {cargando} = useContext(CartContext);  
+  const {cargando} = useContext(CartContext);
+
+
   return (
     <>
     <div className="item-list-container">

@@ -12,41 +12,18 @@ import { db } from '../../firebase/client'
 
 
 const ItemList = () => {
-  const { productos } = useContext(CartContext);
-
-  const [productosC, setProductos] = useState([])
-
-  const [cargandoCategory, setCargandoCat] = useState(true)
-
-  const { cantidadEnCarrito } = useContext(CartContext);
-
-  const params = useParams();
-  const categoria = useParams().id;
-   console.log("category por id DESDE ITEM LIST ", categoria)
+  const {productos} = useContext(CartContext);  
 
 
-  useEffect(() => {
-      const productsRef = collection(db, "products")
-      const q = categoria ? query(productsRef, where( "categoryID", "==", categoria)) : productsRef;
-        getDocs(q).then((resp)  => {
-          setProductos(
-            resp.docs.map((doc) => {
-              return { ...doc.data(), id: doc.id  }
-            })
-          
-          )
-          setCargandoCat(false)
-        })
-       
-  },[categoria]); 
+
 
 
   return (
     <> 
 { 
     <div>
-      <h4>CATEGORIA  : </h4>
-    {productosC.map(prod => (
+      <h4> item list container : </h4>
+    {productos.map(prod => (
      <Item key={prod.id} producto={prod} />
      ))} 
     </div> 

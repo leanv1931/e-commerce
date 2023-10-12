@@ -5,7 +5,6 @@ import { useContext } from "react";
 
 const Item = ({ producto }) => {
 
-  const { agregarAlCarrito } = useContext(CartContext);
 
   return (
 
@@ -17,7 +16,7 @@ const Item = ({ producto }) => {
         <p className="product-price">Precio: {producto.price}</p>
         <p className="product-category">Categoría ID: {producto.categoryID}</p>
       </div>
-      <button> <Link to={`/item/${producto.id}`} onClick={agregarAlCarrito}> Ver Detalles </Link></button>
+      <button> <Link to={`/item/${producto.id}`}> Ver Detalles </Link></button>
     </div>
 
 </>

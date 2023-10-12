@@ -1,9 +1,9 @@
 import { createContext } from "react";
 import { useEffect, useState} from 'react';
 import { db } from '../firebase/client'
-import {getDocs, collection, query, where } from 'firebase/firestore'
-import { useParams } from "react-router-dom";
-
+import {getDocs, collection } from 'firebase/firestore'
+/* import { useParams } from "react-router-dom";
+ */// query, where
 
 // Creamos el contexto con createContext
 export const CartContext = createContext(); 
@@ -14,14 +14,19 @@ export const CartComponentContext = ({children}) => {
 
   const [cargando, setCargando] = useState(true)
   const [productos, setProductos] = useState([])
-  const [cantidadEnCarrito, setCantidadEnCarrito] = useState(0);
-  const [carritoCheckout, setCheckout ] = useState([])
   const [contador, setContador] = useState(0)
+  const [producto_1, setProducto_1] = useState([])
+  const [carritoCart, setCarrito] = useState([]);
+  const [precioTotal, setPrecioTotal] = useState(0)
+
+
+
+
 
 
 
   //const params = useParams();
-  const categoria = useParams().id;
+//  const categoria = useParams().id;
 
   useEffect(() => {
     const productsRef = collection(db, "products")
@@ -36,10 +41,7 @@ export const CartComponentContext = ({children}) => {
   }, []); 
 
 
-const agregarAlCarrito = () => {
-  setCantidadEnCarrito(contador);
-  
-};
+
 
     
 const increment = () => {
@@ -54,8 +56,46 @@ const reset = () => {
   setContador(0)
 }
 
-  return <CartContext.Provider value={{productos, cargando, agregarAlCarrito, cantidadEnCarrito, increment,
-                                      decrement, reset, contador, carritoCheckout, setCheckout }}>
+const agregarAlCarrito = () => {
+ // setContador(contador);
+  const productoEnCarrito = {
+
+   
+    id: producto_1.id,
+    cantidad: contador,
+    precio: producto_1.precio,
+    image: producto_1.image,
+    contadorCart: contador
+  };
+
+    // Actualiza el estado del carrito agregando el producto
+   // setCarrito([...carritoCart, productoEnCarrito]);
+    setCarrito([productoEnCarrito]);
+
+};
+
+/* const calcularTotal = () => {
+  return producto_1.reduce((total, producto_1) => {
+    return total + producto_1.price * contador;
+   
+  }, 0);
+}; */
+let total = 0;
+const calcularTotal = () => {
+
+
+  for (const producto of carritoCart) {
+  //  carritoCart.key= producto.id,
+    total += producto.price * producto.cantidad;
+  }
+
+  setPrecioTotal(precioTotal)
+ // return total;
+};
+//const total: calcularTotal()
+
+  return <CartContext.Provider value={{productos, setProductos, producto_1, setProducto_1, cargando, increment,
+                                      decrement, reset, contador, agregarAlCarrito, calcularTotal, carritoCart, setPrecioTotal, precioTotal }}>
         {children}
     </CartContext.Provider>
 }

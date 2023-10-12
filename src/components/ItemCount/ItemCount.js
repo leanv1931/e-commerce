@@ -7,26 +7,11 @@ import { CartContext } from "../../context/cartContext";
 
 
 
-
 const ItemCount= ( {producto } ) => {
 
-    const {contador} = useContext(CartContext);
-    const {decrement} = useContext(CartContext);
-    const {increment} = useContext(CartContext);
-    const {reset} = useContext(CartContext);
-    const { agregarAlCarrito} = useContext(CartContext);
-    const { carritoCheckout } = useContext(CartContext);
+    const { contador, increment, decrement, reset, agregarAlCarrito } = useContext(CartContext);
 
-
-
-    const { setCheckout} = useContext(CartContext);
-
-
-    const IrCheckout = () => {
-      //  setCheckout(producto)
-      setCheckout([...carritoCheckout, producto]);
-
-    }
+    
 
     return (
 
@@ -35,13 +20,9 @@ const ItemCount= ( {producto } ) => {
             <button onClick={decrement}>-</button>
             <button onClick={increment}>+</button>
             <button onClick={reset}>Resetear</button>
+            <button onClick={agregarAlCarrito}>Agregar al Carrito</button>
 
-           {/*  <button onClick={[agregarAlCarrito , IrCheckout() ]}  >Agregar al carrito</button> */}
-
-            <button onClick={() => {
-                    agregarAlCarrito();
-                    IrCheckout();
-                        }}>Agregar al carrito</button>
+           
         </>
       );
 
