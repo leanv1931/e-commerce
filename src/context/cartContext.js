@@ -14,6 +14,7 @@ export const CartComponentContext = ({children}) => {
   const [producto_1, setProducto_1] = useState([])
   const [carritoCart, setCarrito] = useState([]);
   const [precioTotal, setPrecioTotal] = useState(0)
+  const [checkout, mostrarCheckout] = useState([]);
 
   useEffect(() => {
     const productsRef = collection(db, "products")
@@ -28,9 +29,6 @@ export const CartComponentContext = ({children}) => {
   }, []); 
 
 
-
-
-    
 const increment = () => {
   setContador(contador => contador + 1)
 }
@@ -69,7 +67,7 @@ const finalizarCompra = () =>{
 
 
   return <CartContext.Provider value={{productos, setProductos, producto_1, setProducto_1, cargando, increment,
-                                      decrement, reset, contador, agregarAlCarrito, carritoCart, setPrecioTotal, precioTotal, finalizarCompra }}>
+                                      decrement, reset, contador, agregarAlCarrito, carritoCart, setPrecioTotal, precioTotal, finalizarCompra, mostrarCheckout, checkout }}>
         {children}
     </CartContext.Provider>
 }

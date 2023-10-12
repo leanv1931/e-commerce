@@ -1,9 +1,8 @@
 
-import { Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 import React from "react";
 import { useParams } from 'react-router-dom'
-import { useEffect, useState} from 'react';
+import { useEffect} from 'react';
 import { db } from '../../firebase/client'
 import {getDoc, doc } from 'firebase/firestore'
 import { CartContext } from "../../context/cartContext";
@@ -20,7 +19,6 @@ const ItemDetail = ( ) => {
       const productRef = doc(db, "products", id);
       const getProduct = () => {
         getDoc(productRef).then(snapshot => {
-          console.log("set item details mostrar ", { id: snapshot.id, ...snapshot.data() });
           const producto = { ...snapshot.data(), id: snapshot.id };
           setProducto_1(producto); // Agregar producto al estado global
         });
