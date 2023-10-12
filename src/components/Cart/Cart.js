@@ -4,28 +4,9 @@ import { useEffect} from 'react';
 
 
 const Cart = () => {
-  const { productos, total } = useContext(CartContext);
-
-  const { contador, calcularTotal } = useContext(CartContext);
 
   const { carritoCart } = useContext(CartContext);
-
-  const { precioTotal} = useContext(CartContext);
-
-
-   // Llama a la función calcularTotal y actualiza el precioTotal cuando sea necesario
-   const actualizarTotal = () => {
-   // const totalCalculado = calcularTotal(carritoCart); // Asumiendo que calcularTotal toma un argumento, que es tu carrito de compras
-  //  setPrecioTotal(totalCalculado);
-
-  calcularTotal();
-  };
-
-  // Llama a actualizarTotal cuando sea necesario, por ejemplo, cuando cambia el carrito de compras
-  useEffect(() => {
-    actualizarTotal();
-  }, [carritoCart]);
-
+  const { finalizarCompra } = useContext(CartContext);
 
 
 
@@ -36,24 +17,25 @@ const Cart = () => {
       <ul>
         {carritoCart.map((producto) => (
           <li key={producto.id}>
-            {producto.title} - Cantidad: {producto.cantidad} - Precio por unidad: {producto.price}
+            {producto.title} - Cantidad: {producto.cantidad} - Precio por unidad: {producto.precio}
             <div className="product-item">
             <img src={producto.image} alt={producto.title} />
             <div className="product-details"></div>
-              <p className="product-title">Título: {producto.title}</p>
-              <p className="product-price">Precio: {producto.price}</p>
-              <p className="product-category">Categoría ID: {producto.categoryID}</p>
+              <p className="product-category">Precio: {producto.precio}</p>
+              <p className="product-title">Total: {producto.total}</p>
             </div>
           </li>
         ))}
       </ul>
-          <p>console.log("mi compra total es : ")</p>
-      
-     
-      <h3>Total: {precioTotal}</h3>
+      <h3><p> Total: ${carritoCart.total}</p></h3>
 
-      {/* Agrega aquí un botón para eliminar productos del carrito */}
+      <div className="product-item">
+        <button onClick={finalizarCompra}>Agregar al Carrito</button>
+      </div>
+
     </div>
+   
+
   );
 };
 

@@ -7,7 +7,7 @@ import { CartContext } from "../../context/cartContext";
 
 
 
-const ItemCount= ( {producto } ) => {
+const ItemCount= () => {
 
     const { contador, increment, decrement, reset, agregarAlCarrito } = useContext(CartContext);
 

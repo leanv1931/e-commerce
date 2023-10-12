@@ -1,15 +1,11 @@
 import { createContext } from "react";
 import { useEffect, useState} from 'react';
 import { db } from '../firebase/client'
-import {getDocs, collection } from 'firebase/firestore'
-/* import { useParams } from "react-router-dom";
- */// query, where
+import {getDocs, collection, addDoc} from 'firebase/firestore'
 
-// Creamos el contexto con createContext
 export const CartContext = createContext(); 
 
 
-// Creamos un componente para nuestro contexto
 export const CartComponentContext = ({children}) => {
 
   const [cargando, setCargando] = useState(true)
@@ -18,15 +14,6 @@ export const CartComponentContext = ({children}) => {
   const [producto_1, setProducto_1] = useState([])
   const [carritoCart, setCarrito] = useState([]);
   const [precioTotal, setPrecioTotal] = useState(0)
-
-
-
-
-
-
-
-  //const params = useParams();
-//  const categoria = useParams().id;
 
   useEffect(() => {
     const productsRef = collection(db, "products")
@@ -57,45 +44,35 @@ const reset = () => {
 }
 
 const agregarAlCarrito = () => {
- // setContador(contador);
   const productoEnCarrito = {
-
-   
     id: producto_1.id,
     cantidad: contador,
-    precio: producto_1.precio,
+    precio: producto_1.price,
     image: producto_1.image,
-    contadorCart: contador
+    total: producto_1.price * contador
   };
-
-    // Actualiza el estado del carrito agregando el producto
-   // setCarrito([...carritoCart, productoEnCarrito]);
-    setCarrito([productoEnCarrito]);
-
+  console.log("AGREGAR CARRITO")
+  setCarrito(prevCarrito => [...prevCarrito, productoEnCarrito]);
+  console.log(carritoCart)
 };
 
-/* const calcularTotal = () => {
-  return producto_1.reduce((total, producto_1) => {
-    return total + producto_1.price * contador;
-   
-  }, 0);
-}; */
-let total = 0;
-const calcularTotal = () => {
+
+const finalizarCompra = () =>{
+
+    const order = {
+      buyer: {name: "Abel", phone: "1155889966", email: "abel@abel.com"},
+      items: carritoCart,
+      total: carritoCart[0].total
+    }
+    const orderCollection = collection(db, 'pedidos')
+    addDoc(orderCollection, order).then(({id}) => console.log(id))
 
 
-  for (const producto of carritoCart) {
-  //  carritoCart.key= producto.id,
-    total += producto.price * producto.cantidad;
-  }
+}
 
-  setPrecioTotal(precioTotal)
- // return total;
-};
-//const total: calcularTotal()
 
   return <CartContext.Provider value={{productos, setProductos, producto_1, setProducto_1, cargando, increment,
-                                      decrement, reset, contador, agregarAlCarrito, calcularTotal, carritoCart, setPrecioTotal, precioTotal }}>
+                                      decrement, reset, contador, agregarAlCarrito, carritoCart, setPrecioTotal, precioTotal, finalizarCompra }}>
         {children}
     </CartContext.Provider>
 }

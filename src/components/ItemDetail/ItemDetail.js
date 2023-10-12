@@ -12,39 +12,22 @@ import { useContext } from "react";
 
 
 const ItemDetail = ( ) => {
-   const {id} = useParams();
-
- 
- 
-
+  const {id} = useParams();
   const {producto_1, setProducto_1 } = useContext(CartContext);
 
-  const [] = useState([])
-  console.log("prodcuto 1 antes ",producto_1)
-
-
-
-
   useEffect(() => {
-    if(id){
-      const productRef = doc(db, "products", id)
+    if (id) {
+      const productRef = doc(db, "products", id);
       const getProduct = () => {
         getDoc(productRef).then(snapshot => {
-          console.log( "set producto_1", { id: snapshot.id, ...snapshot.data()} );
-    //      setProducto_1({ ...snapshot.data(), id: snapshot.id } 
+          console.log("set item details mostrar ", { id: snapshot.id, ...snapshot.data() });
           const producto = { ...snapshot.data(), id: snapshot.id };
-          setProducto_1("set producto global ",(prevProductos) => [...prevProductos, producto]); 
-
-          console.log("producto 1 despues :  ",producto_1)
-
-
-        })
-      } 
+          setProducto_1(producto); // Agregar producto al estado global
+        });
+      };
       getProduct();
     }
   }, [id]);
-
-
 
 
 
@@ -60,10 +43,7 @@ const ItemDetail = ( ) => {
         <p className="product-price">Description Producto: {producto_1.description}</p>
         <p> {producto_1.id} </p>
       </div>
-
-       <ItemCount />  
-       
-    
+       <ItemCount /> 
     </div> 
     </>
   );
